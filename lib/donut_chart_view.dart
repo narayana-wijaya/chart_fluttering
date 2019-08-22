@@ -1,6 +1,31 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+class DonutChartView extends StatefulWidget {
+  final List<DonutChartModel> data;
+
+  DonutChartView(this.data);
+
+  @override
+  _DonutChartViewState createState() => _DonutChartViewState(this.data);
+}
+
+class _DonutChartViewState extends State<DonutChartView> {
+  List<DonutChartModel> data;
+
+  _DonutChartViewState(this.data);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: CustomPaint(
+        painter: DonutChart(data),
+      ),
+    );
+  }
+}
+
+
 //class PieChartView extends StatefulWidget {
 //  List<DummyChartModel> model;
 //
@@ -80,7 +105,7 @@ import 'dart:math' as math;
 //}
 
 class TabContent extends StatelessWidget {
-  List<DummyChartModel> data;
+  final List<DonutChartModel> data;
 
   TabContent(this.data);
 
@@ -98,7 +123,7 @@ class TabContent extends StatelessWidget {
                   height: 214,
                   width: 214,
                   child: CustomPaint(
-                    painter: TexoPieChart(data),
+                    painter: DonutChart(data),
                   ),
                 ),
               ),
@@ -126,10 +151,9 @@ class TabContent extends StatelessWidget {
 }
 
 class LegendView extends StatelessWidget {
-  String label;
-//  String color;
-  bool isCircle;
-  Color color;
+  final String label;
+  final bool isCircle;
+  final Color color;
 
   LegendView(this.label, {this.color, this.isCircle = true});
 
@@ -160,11 +184,11 @@ class LegendView extends StatelessWidget {
   }
 }
 
-class TexoPieChart extends CustomPainter {
+class DonutChart extends CustomPainter {
 
-  List<DummyChartModel> data;
+  List<DonutChartModel> data;
 
-  TexoPieChart(this.data);
+  DonutChart(this.data);
 
   double width = 30;
   double gap;
@@ -185,7 +209,7 @@ class TexoPieChart extends CustomPainter {
 
     startAngl = 0;
 
-    for (DummyChartModel model in data) {
+    for (DonutChartModel model in data) {
       double arcAngle =  (model.total / totalTrx) * 2 * math.pi;
 
       final gradient = new SweepGradient(
@@ -232,12 +256,12 @@ class TexoPieChart extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) { return false; }
 }
 
-class DummyChartModel {
+class DonutChartModel {
   String name;
   int total;
   Color startColor;
   Color endColor;
 
-  DummyChartModel({@required this.name, @required this.total, @required this.startColor, @required this.endColor});
+  DonutChartModel({@required this.name, @required this.total, @required this.startColor, @required this.endColor});
 }
 

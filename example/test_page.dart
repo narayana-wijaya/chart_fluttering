@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chart_fluttering/pie_chart_view.dart';
+import 'package:chart_fluttering/donut_chart_view.dart';
 import 'dart:math' as math;
 
 class TestPage extends StatefulWidget {
@@ -15,11 +15,11 @@ class _TestPageState extends State<TestPage> {
   @override
   void initState() {
     data = [
-      DummyChartModel(name: 'OVO', total: random.nextInt(100), startColor: Colors.purple, endColor: Colors.purpleAccent),
-      DummyChartModel(name: 'Go Pay', total: random.nextInt(100), startColor: Colors.green, endColor: Colors.greenAccent),
-      DummyChartModel(name: 'Texo', total: random.nextInt(100), startColor: Colors.blueAccent, endColor: Colors.lightBlueAccent),
-      DummyChartModel(name: 'DKI Debit', total: random.nextInt(100), startColor: Colors.deepOrange, endColor: Colors.orange),
-      DummyChartModel(name: 'BNI Kredit', total: random.nextInt(100), startColor: Colors.yellow, endColor: Colors.yellowAccent)
+      DonutChartModel(name: 'OVO', total: random.nextInt(100), startColor: Colors.purple, endColor: Colors.purpleAccent),
+      DonutChartModel(name: 'Go Pay', total: random.nextInt(100), startColor: Colors.green, endColor: Colors.greenAccent),
+      DonutChartModel(name: 'Texo', total: random.nextInt(100), startColor: Colors.blueAccent, endColor: Colors.lightBlueAccent),
+      DonutChartModel(name: 'DKI Debit', total: random.nextInt(100), startColor: Colors.deepOrange, endColor: Colors.orange),
+      DonutChartModel(name: 'BNI Kredit', total: random.nextInt(100), startColor: Colors.yellow, endColor: Colors.yellowAccent)
     ];
     super.initState();
   }
